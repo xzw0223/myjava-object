@@ -14,6 +14,7 @@
         <module>custom-spring</module>
         <module>custom-spring-demo</module>
         <module>tank</module>
+        <module>mybatis-src</module>
     </modules>
     <build>
         <plugins>
