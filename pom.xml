@@ -10,6 +10,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mybatis</module>
+        <module>desgin-patterns</module>
+        <module>custom-spring</module>
+        <module>custom-spring-demo</module>
+        <module>tank</module>
     </modules>
     <build>
         <plugins>

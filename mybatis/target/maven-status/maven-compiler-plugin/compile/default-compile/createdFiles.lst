@@ -1,0 +1,8 @@
+xzw\shuai\mybatis\annotation\AnnotationUserMapperTest.class
+xzw\shuai\mybatis\pojo\User.class
+xzw\shuai\mybatis\dao\imp\UserDao.class
+xzw\shuai\mybatis\mapper\UserMapperTest.class
+xzw\shuai\mybatis\mapper\UserMapper.class
+xzw\shuai\mybatis\dao\UserDaoImpl.class
+xzw\shuai\mybatis\annotation\AnnotationUserMapper.class
+xzw\shuai\mybatis\dao\MyBatisTest.class

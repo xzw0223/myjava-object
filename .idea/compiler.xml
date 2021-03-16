@@ -6,7 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="custom-spring-demo" />
         <module name="mybatis" />
+        <module name="tank" />
+        <module name="custom-spring" />
+        <module name="desgin-patterns" />
       </profile>
     </annotationProcessing>
   </component>

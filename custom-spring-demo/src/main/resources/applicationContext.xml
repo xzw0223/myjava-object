@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans >
+    <bean id="userDao" class="xzw.shuai.dao.impl.UserDaoImpl">
+        <property name="userName" value="lilei"/>
+        <property name="password" value="123123"/>
+
+    </bean>
+
+
+    <bean id="userService" class="xzw.shuai.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+</beans>

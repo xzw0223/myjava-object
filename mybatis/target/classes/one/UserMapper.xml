@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+
+    <!--根据id获取用户-->
+    <select id="findUserById" parameterType="int" resultType="xzw.shuai.mybatis.pojo.User">
+        select * from user where id = #{id}
+    </select>
+
+    <!--根据名称牧户查询用户列表
+     - parameterType：定义输入参数的Java类型，
+     - resultType：定义结果映射类型。
+     - #{}：相当于JDBC中的？占位符
+     - #{id}表示使用preparedstatement设置占位符号并将输入变量id传到sql。
+     - ${value}：取出参数名为value的值。将${value}占位符替换。
+     注意：如果是取简单数量类型的参数，括号中的参数名称必须为value
+    -->
+    <select id="findUsersByName" parameterType="java.lang.String" resultType="xzw.shuai.mybatis.pojo.User">
+        select * from user where username like '%${value}%'
+    </select>
+    <!--
+  • 区别1
+    #{} ：相当于JDBC SQL语句中的占位符? (PreparedStatement)
+    ${} : 相当于JDBC SQL语句中的连接符合 + (Statement) • 区别2
+    #{} ： 进行输入映射的时候，会对参数进行类型解析（如果是String类型，那么SQL语句会自动加上’’）
+    ${} :进行输入映射的时候，将参数原样输出到SQL语句中
+  • 区别3
+    #{} ： 如果进行简单类型（String、Date、8种基本类型的包装类）的输入映射时，#{}中参数名称可以
+    任意
+    ${} : 如果进行简单类型（String、Date、8种基本类型的包装类）的输入映射时，${}中参数名称必须
+    是value
+  • 区别4
+    ${} :存在SQL注入问题 ，使用OR 1=1 关键字将查询条件忽略
+    添加用户
+    #{}：是通过反射获取数据的   -StaticSqlSource
+    ${}：是通过OGNL表达式会随着对象的嵌套而相应的发生层级变化  -DynamicSqlSource
+    -->
+
+
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="xzw.shuai.mybatis.pojo.User">
+        <!--selectKey 返回主键 添加到那个属性里 id 中
+        • keyProperty:指定返回的主键，存储在pojo中的哪个属性
+        • order：selectKey标签中的sql的执行顺序，是相对与insert语句来说。由于mysql的自增原理，执行完insert语句
+         之后才将主键生成，所以这里selectKey的执行顺序为after。 • resultType:返回的主键对应的JAVA类型
+        • LAST_INSERT_ID():是mysql的函数，返回auto_increment自增列新记录id值。
+        -->
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into user(username,birthday,sex,address) values(#{username},#{birthday}, #{sex}, #{address})
+    </insert>
+
+
+</mapper>
