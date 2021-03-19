@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mybatis" />
-        <module name="custom-spring" />
+        <module name="custom-mybatis" />
         <module name="desgin-patterns" />
+        <module name="custom-spring" />
+        <module name="mybatis" />
+        <module name="mybatis-demo" />
         <module name="custom-spring-demo" />
         <module name="mybatis-src" />
         <module name="tank" />

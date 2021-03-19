@@ -742,8 +742,9 @@ public class DefaultResultSetHandler implements ResultSetHandler {
 	}
 
 	private Constructor<?> findDefaultConstructor(final Constructor<?>[] constructors) {
-		if (constructors.length == 1)
+		if (constructors.length == 1) {
 			return constructors[0];
+		}
 
 		for (final Constructor<?> constructor : constructors) {
 			if (constructor.isAnnotationPresent(AutomapConstructor.class)) {
@@ -756,8 +757,9 @@ public class DefaultResultSetHandler implements ResultSetHandler {
 	private boolean allowedConstructorUsingTypeHandlers(final Constructor<?> constructor,
 			final List<JdbcType> jdbcTypes) {
 		final Class<?>[] parameterTypes = constructor.getParameterTypes();
-		if (parameterTypes.length != jdbcTypes.size())
+		if (parameterTypes.length != jdbcTypes.size()) {
 			return false;
+		}
 		for (int i = 0; i < parameterTypes.length; i++) {
 			if (!typeHandlerRegistry.hasTypeHandler(parameterTypes[i], jdbcTypes.get(i))) {
 				return false;
