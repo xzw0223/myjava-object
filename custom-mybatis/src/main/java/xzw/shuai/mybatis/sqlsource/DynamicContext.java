@@ -1,4 +1,4 @@
-package xzw.shuai.mybatis.config;
+package xzw.shuai.mybatis.sqlsource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class DynamicContext {
         return sb.toString().trim();
     }
 
-    public Map<String, Object> getBindings() {
+    public Map<String, Object>  getBindings() {
         return bindings;
     }
 }

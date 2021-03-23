@@ -1,4 +1,6 @@
-package xzw.shuai.mybatis.config;
+package xzw.shuai.mybatis.sqlnode;
+
+import xzw.shuai.mybatis.sqlsource.DynamicContext;
 
 public class StaticTextSqlNode implements SqlNode {
     private String sqlText;
@@ -9,6 +11,7 @@ public class StaticTextSqlNode implements SqlNode {
 
     @Override
     public void apply(DynamicContext context) {
-
+        // sql 文本追加
+        context.appendSql(sqlText);
     }
 }

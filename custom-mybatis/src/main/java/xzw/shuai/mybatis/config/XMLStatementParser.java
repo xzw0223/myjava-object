@@ -1,7 +1,7 @@
 package xzw.shuai.mybatis.config;
 
 import org.dom4j.Element;
-import org.dom4j.Node;
+import xzw.shuai.mybatis.sqlsource.SqlSource;
 
 /**
  * @author DELL

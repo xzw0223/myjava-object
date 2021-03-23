@@ -1,8 +1,9 @@
-package xzw.shuai.mybatis.config;
+package xzw.shuai.mybatis.sqlnode;
 
-import java.util.ArrayList;
+import xzw.shuai.mybatis.sqlnode.SqlNode;
+import xzw.shuai.mybatis.sqlsource.DynamicContext;
+
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * @author DELL

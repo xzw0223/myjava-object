@@ -1,5 +1,7 @@
 package xzw.shuai.mybatis.config;
 
+import xzw.shuai.mybatis.sqlsource.SqlSource;
+
 /**
  * @author DELL
  * 封装select inster 等 crud信息标签的信息

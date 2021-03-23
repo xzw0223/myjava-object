@@ -3,6 +3,11 @@ package xzw.shuai.mybatis.config;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.Text;
+import xzw.shuai.mybatis.sqlnode.*;
+import xzw.shuai.mybatis.sqlnode.handler.NodeHandler;
+import xzw.shuai.mybatis.sqlsource.DynamicSqlSource;
+import xzw.shuai.mybatis.sqlsource.RawSqlSource;
+import xzw.shuai.mybatis.sqlsource.SqlSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +60,6 @@ public class XMLScriptParser {
         for (int i = 0; i < nodeCount; i++) {
             Node node = element.node(i);
             // 区分select 标签的子节点类型,
-
             // 如果类型是文本类型则封装StaticTextSqlNode
             if (node instanceof Text) {
                 String sqlText = node.getText().trim();
@@ -70,25 +74,23 @@ public class XMLScriptParser {
                 } else {
                     contents.add(new StaticTextSqlNode(sqlText));
                 }
-
             } // 递归解析
             else if (node instanceof Element) {
                 // 比如 if \ where \ foreach等动态sql子标签就在此处处理
 
                 // 根据标签名称封装到不同的节点
                 String nodeName = node.getName().toLowerCase();
+                // 每一种动态标签都有对应封装好了的处理逻辑, 根据标签名获取对应的处理逻辑
+                // 如 ifNodeHandler  whereNodeHandler   -- map中存储了逻辑的映射关系,
                 NodeHandler nodeHandler = nodeHandlerMap.get(nodeName);
                 nodeHandler.handlerNode((Element) node, contents);
                 isDynamic = true;
             }
-
         }
         return new MixedSqlNode(contents);
     }
 
     public class IfNodeHandler implements NodeHandler {
-
-
         @Override
         public void handlerNode(Element nodeToHandle, List<SqlNode> targetContents) {
             // 对标签进行解析
@@ -97,7 +99,6 @@ public class XMLScriptParser {
             String test = nodeToHandle.attributeValue("test");
             IfSqlNode ifSqlNode = new IfSqlNode(test, mixedSqlNode);
             targetContents.add(ifSqlNode);
-
         }
     }
 }

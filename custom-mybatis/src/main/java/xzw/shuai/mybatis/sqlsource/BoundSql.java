@@ -1,4 +1,4 @@
-package xzw.shuai.mybatis.config;
+package xzw.shuai.mybatis.sqlsource;
 
 import java.util.ArrayList;
 import java.util.List;

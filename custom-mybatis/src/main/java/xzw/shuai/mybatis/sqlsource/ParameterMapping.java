@@ -1,4 +1,4 @@
-package xzw.shuai.mybatis.config;
+package xzw.shuai.mybatis.sqlsource;
 
 /**
  * @author DELL

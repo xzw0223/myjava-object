@@ -1,4 +1,4 @@
-package xzw.shuai.mybatis.config;
+package xzw.shuai.mybatis.utils;
 
 import ognl.Ognl;
 import ognl.OgnlContext;
