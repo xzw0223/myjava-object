@@ -21,6 +21,15 @@ public class DynamicSqlSource implements SqlSource {
      */
     @Override
     public BoundSql getBoundSql(Object param) {
-        return null;
+        // 首先先调用sqlNode的处理,将动态标签和${}处理一下
+        DynamicContext context =new DynamicContext(param);
+        rootSqlNode.apply(context);
+
+        // 再待用sqlSourceParser来处理#{}
+        SqlSourceParser sqlSourceParser = new SqlSourceParser();
+        SqlSource sqlSource = sqlSourceParser.parser(context.getSql());
+
+
+        return sqlSource.getBoundSql(param);
     }
 }

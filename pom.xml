@@ -17,6 +17,7 @@
         <module>mybatis-src</module>
         <module>custom-mybatis</module>
         <module>mybatis-demo</module>
+        <module>mybatis-plus</module>
     </modules>
     <build>
         <plugins>

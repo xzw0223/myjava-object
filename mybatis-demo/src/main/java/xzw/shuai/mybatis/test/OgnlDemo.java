@@ -98,7 +98,7 @@ public class OgnlDemo {
 		user.setId(100);
 		user.setUsername("Jack");
 		context.setRoot(user);
-		
+
 		Object ognl = Ognl.parseExpression("username != null and username != '' ");// 构建Ognl表达式
 		Object value = Ognl.getValue(ognl, context, context.getRoot());// 解析表达式
 		System.out.println(value);

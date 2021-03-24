@@ -28,8 +28,6 @@ public class UserDaoImpl implements UserDao {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
-    public UserDaoImpl() {
-    }
 
     @Override
     public User queryUserById2(User param) {
@@ -37,28 +35,11 @@ public class UserDaoImpl implements UserDao {
         // 通过工厂模式来屏蔽sqlSession对象细节
         SqlSession sqlSession = sqlSessionFactory.openSqlSession();
 
-        User user = sqlSession.selectOne("test.findUserById", param);
 
-
-        return null;
+        return sqlSession.selectOne("test.findUserById", param);
     }
 
-    /**
-     * 使用自定义的框架查询
-     */
-    @Test
-    public void testQueryUserById2() {
 
-        InputStream is = Resources.getResourceAsStream("SqlMapConfig.xml");
-        // sqlSessionFactory的创建有多种方式,但是不希望知道创建的构造细节
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuild().build(is);
-
-        UserDao userDao = new UserDaoImpl(sqlSessionFactory);
-        User user = new User();
-        user.setId(1);
-        User user1 = userDao.queryUserById(user);
-        System.out.println(user1.toString());
-    }
 
     /**
      * 先使用JDBC实现

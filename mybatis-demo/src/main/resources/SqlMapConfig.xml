@@ -8,7 +8,7 @@
 				<property name="url"
 					value="jdbc:mysql://node04:3306/ssm"></property>
 				<property name="username" value="root"></property>
-				<property name="password" value="root"></property>
+				<property name="password" value="Root.Node04"></property>
 			</dataSource>
 		</environment>
 	</environments>

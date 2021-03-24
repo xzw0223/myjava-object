@@ -4,7 +4,7 @@
 		parameterType="xzw.shuai.mybatis.pojo.User"
 		resultType="xzw.shuai.mybatis.pojo.User"
 		statementType="prepared">
-		SELECT * FROM user WHERE id = #{id} AND username like '%${username}'
+		SELECT * FROM user WHERE id = #{id}  AND username like '%${username}'
 		<if test="username != null and username !='' ">
 			AND username like '%${username}'
 			<if test="username != null and username !=''">

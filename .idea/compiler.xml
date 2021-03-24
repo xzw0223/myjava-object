@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="custom-mybatis" />
         <module name="desgin-patterns" />
+        <module name="mybatis-plus" />
         <module name="custom-spring" />
         <module name="mybatis" />
         <module name="mybatis-demo" />
@@ -16,5 +17,10 @@
         <module name="tank" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mybatis-plus" options="-parameters" />
+    </option>
   </component>
 </project>

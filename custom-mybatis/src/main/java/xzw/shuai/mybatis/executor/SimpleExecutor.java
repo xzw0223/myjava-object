@@ -37,21 +37,39 @@ public class SimpleExecutor extends BaseExecutor {
                 handleParameter(statement, param, boundSql);
 
                 ResultSet resultSet = statement.executeQuery();
-                handleResult(resultSet, mappedStatement, resultSet);
+                handleResult(resultSet, mappedStatement, result);
             }
-
-        } catch (SQLException | IllegalAccessException | NoSuchFieldException e) {
+            return result;
+        } catch (SQLException | IllegalAccessException | NoSuchFieldException | InstantiationException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private void handleResult(ResultSet resultSet, MappedStatement mappedStatement, ResultSet set) throws SQLException {
+    private void handleResult(ResultSet resultSet, MappedStatement mappedStatement, List<Object> results) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+
+        // 从结果集中一行一行获取数据
+        // 每一行数据在一列有一列的取出来,
+        // 最终将获取到的每一列的值都映射到目标对象指定的属性中 -- 列名和属性名要保持一致
+
+        Class<?> resultTypeClass = mappedStatement.getResultTypeClass();
         while (resultSet.next()) {
-            // 获取元数据
+            // 结果目标对象
+            Object instance = resultTypeClass.newInstance();
+            // 获取元数据( 目的取列的信息)
             ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            for (int i = 0; i < columnCount; i++) {
+                String columnName = metaData.getColumnName(i + 1);
+                Field field = resultTypeClass.getDeclaredField(columnName);
+                field.setAccessible(true);
+                Object object = resultSet.getObject(columnName);
+
+                field.set(instance, object);
+            }
 
 
+            results.add(instance);
         }
     }
 

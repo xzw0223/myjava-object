@@ -12,6 +12,11 @@ public class BoundSql {
 
     private List<ParameterMapping> parameterMappings = new ArrayList<>();
 
+    public BoundSql(String sql, List<ParameterMapping> parameterMappings) {
+        this.sql = sql;
+        this.parameterMappings = parameterMappings;
+    }
+
     public BoundSql(String sql) {
         this.sql = sql;
     }
