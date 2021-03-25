@@ -19,6 +19,7 @@
         <module>mybatis-demo</module>
         <module>mybatis-plus</module>
         <module>custom-spring-new</module>
+        <module>ssm</module>
     </modules>
     <build>
         <plugins>

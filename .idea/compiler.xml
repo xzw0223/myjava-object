@@ -9,6 +9,7 @@
         <module name="custom-mybatis" />
         <module name="desgin-patterns" />
         <module name="mybatis-plus" />
+        <module name="ssm" />
         <module name="custom-spring" />
         <module name="custom-spring-new" />
         <module name="spring-src" />
