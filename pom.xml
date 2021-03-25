@@ -18,6 +18,7 @@
         <module>custom-mybatis</module>
         <module>mybatis-demo</module>
         <module>mybatis-plus</module>
+        <module>custom-spring-new</module>
     </modules>
     <build>
         <plugins>

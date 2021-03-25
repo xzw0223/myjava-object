@@ -10,13 +10,17 @@
         <module name="desgin-patterns" />
         <module name="mybatis-plus" />
         <module name="custom-spring" />
+        <module name="custom-spring-new" />
+        <module name="spring-src" />
         <module name="mybatis" />
         <module name="mybatis-demo" />
         <module name="custom-spring-demo" />
-        <module name="mybatis-src" />
         <module name="tank" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-src" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

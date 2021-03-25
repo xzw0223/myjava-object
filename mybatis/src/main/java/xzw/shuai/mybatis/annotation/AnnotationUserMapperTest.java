@@ -24,7 +24,6 @@ public class AnnotationUserMapperTest {
     @Before
     public void init() {
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
-
         InputStream inputStream = null;
         try {
             final String resource = "three/SqlMapConfig.xml";
